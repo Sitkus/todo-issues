@@ -1,9 +1,24 @@
 <template>
-  <header>
-    <img class="logo" alt="Logo monogram made of L and S letters combination" src="@/assets/logo.svg" />
-    <router-link to="/">Home</router-link> | <router-link to="/issues/open">Open Issues</router-link> |
-    <router-link to="/issues/done">Done Issues</router-link> |
-    <router-link to="/issues/trashed">Trashed Issues</router-link>
+  <header class="header">
+    <nav class="nav">
+      <router-link class="nav__logo-link" to="/">
+        <img class="nav__logo" alt="Logo monogram made of L and S letters combination" src="@/assets/logo.svg" />
+      </router-link>
+      <ul class="nav__list">
+        <li class="nav__item">
+          <router-link class="nav__link" to="/">Home</router-link>
+        </li>
+        <li class="nav__item">
+          <router-link class="nav__link" to="/issues/open">Open Issues</router-link>
+        </li>
+        <li class="nav__item">
+          <router-link class="nav__link" to="/issues/done">Done Issues</router-link>
+        </li>
+        <li class="nav__item nav__item--last">
+          <router-link class="nav__link" to="/issues/trashed">Trashed Issues</router-link>
+        </li>
+      </ul>
+    </nav>
   </header>
 </template>
 
@@ -14,7 +29,42 @@ export default {
 </script>
 
 <style scoped>
-.logo {
-  height: 4rem;
+.header {
+  background-color: var(--light-gray);
 }
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 9rem;
+  max-width: 100rem;
+  padding: 0 2rem;
+  margin: 0 auto;
+}
+
+.nav__logo {
+  height: 4.5rem;
+}
+
+.nav__list {
+  display: flex;
+}
+
+.nav__item {
+  margin-right: 2rem;
+}
+
+.nav__item--last {
+  margin-right: 0;
+}
+
+.nav__link {
+  position: relative;
+}
+
+/* Hover only on desktop devices, so not on mobile */
+/* .nav__link:hover {
+  color: var(--yellow);
+} */
 </style>

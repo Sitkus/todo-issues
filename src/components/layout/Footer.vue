@@ -6,6 +6,11 @@
 
 <style scoped>
 .footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--light-gray);
+  min-height: 7rem;
   text-align: center;
 }
 </style>

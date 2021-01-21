@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main class="main">
     Trashed Issues here
-  </div>
+  </main>
 </template>

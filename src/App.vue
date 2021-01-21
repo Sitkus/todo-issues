@@ -19,9 +19,11 @@ export default {
 </script>
 
 <style>
-/*------------------------------------*\
-  #Default settings
-\*------------------------------------*/
+:root {
+  --black: #161616;
+  --light-gray: #f1f1f1;
+  --yellow: goldenrod;
+}
 
 *,
 *::before,
@@ -41,8 +43,8 @@ html {
 }
 
 body {
-  color: #161616;
-  font-size: 15px;
+  color: var(--black);
+  font-size: 1.5rem;
   overflow-x: hidden;
 }
 
@@ -53,5 +55,46 @@ ul {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+/*------------------------------------*\
+  #Main
+\*------------------------------------*/
+
+.main {
+  min-height: calc(100vh - 16rem);
+  max-width: 100rem;
+  padding: 5rem 2rem;
+  margin: 0 auto;
+}
+
+/*------------------------------------*\
+  #Buttons
+\*------------------------------------*/
+
+button {
+  font-size: 1.6rem;
+  background-color: var(--yellow);
+  color: white;
+  padding: 1.5rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  outline: none;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 250ms ease-in-out;
+}
+
+button:active {
+  transform: scale(0.95);
+  transition: transform 150ms ease-in-out;
+}
+
+/*------------------------------------*\
+  #Router link active
+\*------------------------------------*/
+
+.router-link-exact-active {
+  color: var(--yellow);
 }
 </style>

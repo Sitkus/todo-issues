@@ -1,26 +1,30 @@
 <template>
-  <div>
-    <ul>
-      <!-- Just a test for vuex here -->
-      <li v-bind:key="issue.name" v-for="issue in allIssues">
-        <p>{{ issue.name }}</p>
-        <p>{{ issue.price }}</p>
-      </li>
-    </ul>
-  </div>
+  <main class="main">
+    <article class="hero">
+      <h1 class="hero__title">What's your issue today?</h1>
+      <p class="hero__description">This is a small application for issues storing, reviewing and solving.</p>
+      <button v-on:click="redirectToOpenIssues" class="hero__button">Open issues</button>
+    </article>
+  </main>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-
 export default {
   name: 'Home',
-  computed: mapGetters(['allIssues'])
+  methods: {
+    redirectToOpenIssues() {
+      this.$router.push('/issues/open');
+    }
+  }
 };
 </script>
 
 <style scoped>
-.logo {
-  height: 4rem;
+.hero__title {
+  margin-bottom: 1rem;
+}
+
+.hero__description {
+  margin-bottom: 3rem;
 }
 </style>
