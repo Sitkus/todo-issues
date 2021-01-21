@@ -4,6 +4,7 @@
       <router-link class="nav__logo-link" to="/">
         <img class="nav__logo" alt="Logo monogram made of L and S letters combination" src="@/assets/logo.svg" />
       </router-link>
+
       <ul class="nav__list">
         <li class="nav__item">
           <router-link class="nav__link" to="/">Home</router-link>

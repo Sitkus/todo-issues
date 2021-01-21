@@ -1,11 +1,16 @@
 <template>
   <main class="main">
-    <form class="create-issue">
+    <form @submit.prevent="createIssue" class="create-issue">
       <h2 class="create-issue__title">Create your issue</h2>
 
       <label class="create-issue__label">
         Issue description:
-        <textarea name="description" class="create-issue__description" placeholder="I had trouble with..."></textarea>
+        <textarea
+          v-model="description"
+          name="description"
+          class="create-issue__description"
+          placeholder="I had trouble with..."
+        ></textarea>
       </label>
 
       <button class="create-issue__button">Create issue</button>
@@ -13,17 +18,49 @@
 
     <ul class="issues">
       <h3 class="issues__title">Existing issues</h3>
-      <li class="issues__item" :key="issue.id" v-for="issue in openIssues">{{ issue.description }}</li>
+      <li class="issue" :key="issue.id" v-for="issue in openIssues">
+        <p class="issue__description">{{ issue.description }}</p>
+        <div class="issue__buttons">
+          <input class="issue__checkbox" type="checkbox" name="done" />
+          <button class="issue__button issue__button--trash">X</button>
+        </div>
+      </li>
     </ul>
   </main>
 </template>
 
 <script>
+import { uuid } from 'vue-uuid';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'Open',
-  computed: mapGetters(['openIssues'])
+  computed: mapGetters(['openIssues']),
+  data() {
+    return {
+      description: ''
+    };
+  },
+  methods: {
+    createIssue() {
+      if (this.description !== '') {
+        const newIssue = {
+          id: uuid.v4(),
+          done: false,
+          trash: false,
+          description: this.description
+        };
+
+        this.addIssue(newIssue);
+
+        this.description = '';
+      }
+    },
+    addIssue(newIssue) {
+      // Add issue here
+      console.log(newIssue);
+    }
+  }
 };
 </script>
 
@@ -36,7 +73,7 @@ export default {
   display: flex;
   flex-direction: column;
   max-width: 50rem;
-  margin: 0 auto;
+  margin: 0 auto 5rem;
 }
 
 .create-issue__title {
@@ -62,19 +99,5 @@ export default {
 .create-issue__description:focus {
   border: 1px solid var(--yellow);
   outline: none;
-}
-
-/*------------------------------------*\
-  #Issues list
-\*------------------------------------*/
-
-.issues {
-  max-width: 50rem;
-  margin: 5rem auto 0;
-}
-
-.issues__title {
-  text-align: center;
-  margin-bottom: 2rem;
 }
 </style>

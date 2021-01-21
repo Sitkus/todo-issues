@@ -97,4 +97,38 @@ button:active {
 .router-link-exact-active {
   color: var(--yellow);
 }
+
+/*------------------------------------*\
+  #Issues list
+\*------------------------------------*/
+
+.issues {
+  max-width: 50rem;
+  margin: 0 auto 5rem;
+}
+
+.issues__title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.issue {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.issue:last-child {
+  margin-bottom: 0;
+}
+
+.issue__button {
+  padding: 0.6rem;
+  font-size: 1.4rem;
+}
+
+.issue__checkbox {
+  margin-right: 1rem;
+}
 </style>
