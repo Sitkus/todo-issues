@@ -135,11 +135,10 @@ button:active {
 .issue__button {
   padding: 0.6rem;
   font-size: 1.4rem;
+  margin-right: 1rem;
 }
 
-.issue__checkbox,
-.issue__button--edit {
-  margin-right: 1rem;
-  cursor: pointer;
+.issue__button:last-child {
+  margin-right: 0;
 }
 </style>

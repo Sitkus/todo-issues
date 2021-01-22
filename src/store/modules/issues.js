@@ -57,8 +57,8 @@ const actions = {
   doneIssue({ commit }, id) {
     commit('markComplete', id);
   },
-  updateIssue({ commit }, id, newDescription) {
-    commit('updateIssueDescription', id, newDescription);
+  updateIssue({ commit }, id) {
+    commit('updateIssue', id);
   },
   trashIssue({ commit }, id) {
     commit('trashIssue', id);
@@ -83,10 +83,10 @@ const mutations = {
 
     localStorage.setItem('issues', JSON.stringify(state.issues));
   },
-  updateIssueDescription: (state, id, newDescription) => {
+  updateIssue: (state, modalData) => {
     state.issues = state.issues.map(issue => {
-      if (issue.id === id) {
-        issue.description = newDescription;
+      if (issue.id === modalData.id) {
+        issue.description = modalData.description;
       }
 
       return issue;
