@@ -104,7 +104,7 @@ button:active {
 
 .issues {
   max-width: 50rem;
-  margin: 0 auto 5rem;
+  margin: 0 auto 0;
 }
 
 .issues__title {
@@ -113,6 +113,7 @@ button:active {
 }
 
 .issue {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -123,12 +124,22 @@ button:active {
   margin-bottom: 0;
 }
 
+.issue__description {
+  flex: 1;
+}
+
+.issue__buttons {
+  margin-left: 5rem;
+}
+
 .issue__button {
   padding: 0.6rem;
   font-size: 1.4rem;
 }
 
-.issue__checkbox {
+.issue__checkbox,
+.issue__button--edit {
   margin-right: 1rem;
+  cursor: pointer;
 }
 </style>

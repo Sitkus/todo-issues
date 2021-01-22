@@ -12,7 +12,8 @@ const state = {
       id: uuid.v4(),
       done: false,
       trash: false,
-      description: 'Okay so, the issue is that I got stuck using Safari.'
+      description:
+        'Okay so, the issue is that I got stuck using Safari. Okay so, the issue is that I got stuck using Safari. Okay so, the issue is that I got stuck using Safari.'
     },
     {
       id: uuid.v4(),
@@ -43,7 +44,7 @@ const actions = {
       commit('setIssues', localStorageIssues);
     }
   },
-  addIssue({ commit }, description) {
+  newIssue({ commit }, description) {
     const issue = {
       id: uuid.v4(),
       done: false,
@@ -51,14 +52,56 @@ const actions = {
       description
     };
 
-    commit('newIssue', issue);
+    commit('addIssue', issue);
+  },
+  doneIssue({ commit }, id) {
+    commit('markComplete', id);
+  },
+  updateIssue({ commit }, id, newDescription) {
+    commit('updateIssueDescription', id, newDescription);
+  },
+  trashIssue({ commit }, id) {
+    commit('trashIssue', id);
   }
 };
 
 const mutations = {
   setIssues: (state, issues) => (state.issues = issues),
-  newIssue: (state, issue) => {
+  addIssue: (state, issue) => {
     state.issues.unshift(issue);
+
+    localStorage.setItem('issues', JSON.stringify(state.issues));
+  },
+  markComplete: (state, id) => {
+    state.issues = state.issues.map(issue => {
+      if (issue.id === id) {
+        issue.done = !issue.done;
+      }
+
+      return issue;
+    });
+
+    localStorage.setItem('issues', JSON.stringify(state.issues));
+  },
+  updateIssueDescription: (state, id, newDescription) => {
+    state.issues = state.issues.map(issue => {
+      if (issue.id === id) {
+        issue.description = newDescription;
+      }
+
+      return issue;
+    });
+
+    localStorage.setItem('issues', JSON.stringify(state.issues));
+  },
+  trashIssue: (state, id) => {
+    state.issues = state.issues.map(issue => {
+      if (issue.id === id) {
+        issue.trash = !issue.trash;
+      }
+
+      return issue;
+    });
 
     localStorage.setItem('issues', JSON.stringify(state.issues));
   }

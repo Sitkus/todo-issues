@@ -14,6 +14,7 @@
       </label>
 
       <button class="create-issue__button">Create issue</button>
+      <p class="create-issue__error" v-if="errorMessage">{{ errorMessage }}</p>
     </form>
 
     <ul class="issues">
@@ -21,8 +22,9 @@
       <li class="issue" :key="issue.id" v-for="issue in openIssues">
         <p class="issue__description">{{ issue.description }}</p>
         <div class="issue__buttons">
-          <input class="issue__checkbox" type="checkbox" name="done" />
-          <button class="issue__button issue__button--trash">X</button>
+          <input v-on:change="doneIssue(issue.id)" class="issue__checkbox" type="checkbox" name="done" />
+          <button @click="openUpdateModal(issue)" class="issue__button issue__button--edit">Edit</button>
+          <button @click="trashIssue(issue.id)" class="issue__button issue__button--trash">Delete</button>
         </div>
       </li>
     </ul>
@@ -34,22 +36,35 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'Open',
-  computed: mapGetters(['openIssues']),
   data() {
     return {
-      description: ''
+      description: '',
+      errorMessage: ''
     };
   },
   methods: {
-    ...mapActions(['getIssues', 'addIssue']),
+    ...mapActions(['getIssues', 'newIssue', 'doneIssue', 'updateIssue', 'trashIssue']),
     createIssue() {
-      if (this.description !== '') {
-        this.addIssue(this.description);
+      if (this.description) {
+        this.newIssue(this.description);
 
         this.description = '';
+      } else {
+        this.errorMessage = 'Please fill in the message box';
+
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 2000);
       }
+    },
+    markComplete(id) {
+      this.doneIssue(id);
+    },
+    openUpdateModal(issue) {
+      console.log(issue);
     }
   },
+  computed: mapGetters(['openIssues']),
   created() {
     this.getIssues();
   }
@@ -57,10 +72,6 @@ export default {
 </script>
 
 <style scoped>
-/*------------------------------------*\
-  #Create issue form
-\*------------------------------------*/
-
 .create-issue {
   display: flex;
   flex-direction: column;
@@ -91,5 +102,10 @@ export default {
 .create-issue__description:focus {
   border: 1px solid var(--yellow);
   outline: none;
+}
+
+.create-issue__error {
+  color: red;
+  margin-top: 2rem;
 }
 </style>

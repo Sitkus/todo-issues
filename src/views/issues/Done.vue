@@ -14,10 +14,14 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'Done',
-  computed: mapGetters(['doneIssues'])
+  methods: mapActions(['getIssues']),
+  computed: mapGetters(['doneIssues']),
+  created() {
+    this.getIssues();
+  }
 };
 </script>
