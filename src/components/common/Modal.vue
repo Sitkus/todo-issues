@@ -1,11 +1,13 @@
 <template>
   <section v-if="modal.open" class="modal">
     <form @submit.prevent="updateIssueData" class="form form--modal">
-      <button type="button" @click="closeModal" class="form__exit">X</button>
+      <button type="button" @click="closeModal" class="form__exit">
+        <font-awesome-icon icon="times-circle" />
+      </button>
       <h2 class="form__title">Update issue</h2>
 
       <label class="form__label">
-        Current issue description:
+        Issue description:
         <textarea
           v-model="modal.description"
           name="modalDescription"

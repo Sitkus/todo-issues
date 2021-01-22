@@ -139,9 +139,11 @@ button:active {
 }
 
 .issue__button {
+  background: none;
+  color: var(--black);
   padding: 0.6rem;
   font-size: 1.4rem;
-  margin-right: 1rem;
+  margin-right: 0.2rem;
 }
 
 .issue__button:last-child {

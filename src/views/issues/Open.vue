@@ -7,9 +7,15 @@
       <li class="issue" :key="issue.id" v-for="issue in openIssues">
         <p class="issue__description">{{ issue.description }}</p>
         <div class="issue__buttons">
-          <button @click="doneIssue(issue.id)" class="issue__button isseu__button--done">Done</button>
-          <button @click="openModal(issue)" class="issue__button issue__button--edit">Edit</button>
-          <button @click="trashIssue(issue.id)" class="issue__button issue__button--trash">Trash</button>
+          <button @click="doneIssue(issue.id)" class="issue__button isseu__button--done">
+            Mark done
+          </button>
+          <button @click="openModal(issue)" class="issue__button issue__button--edit">
+            <font-awesome-icon icon="edit" />
+          </button>
+          <button @click="trashIssue(issue.id)" class="issue__button issue__button--trash">
+            <font-awesome-icon icon="trash" />
+          </button>
         </div>
       </li>
     </ul>
