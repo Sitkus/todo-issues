@@ -22,6 +22,7 @@ export default {
 :root {
   --black: #161616;
   --light-gray: #f1f1f1;
+  --light-white: #f9f9f9;
   --yellow: goldenrod;
 }
 
@@ -40,12 +41,15 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  overflow-y: scroll;
 }
 
 body {
   color: var(--black);
   font-size: 1.5rem;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 ul {
@@ -117,6 +121,8 @@ button:active {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: var(--light-white);
+  padding: 2rem 3rem;
   margin-bottom: 1rem;
 }
 
@@ -140,5 +146,46 @@ button:active {
 
 .issue__button:last-child {
   margin-right: 0;
+}
+
+/*------------------------------------*\
+  #Form
+\*------------------------------------*/
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 50rem;
+  margin: 0 auto 5rem;
+}
+
+.form__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.form__label {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__input {
+  font-family: 'Montserrat', sans-serif;
+  resize: vertical;
+  min-height: 10rem;
+  padding: 1.5rem;
+  margin: 1rem 0 2rem;
+  border-radius: 0.5rem;
+}
+
+.form__input:focus {
+  border: 1px solid var(--yellow);
+  outline: none;
+}
+
+.form__error {
+  color: red;
+  margin-top: 2rem;
 }
 </style>
