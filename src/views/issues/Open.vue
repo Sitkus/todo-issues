@@ -30,8 +30,7 @@
 </template>
 
 <script>
-import { uuid } from 'vue-uuid';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'Open',
@@ -42,24 +41,17 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['getIssues', 'addIssue']),
     createIssue() {
       if (this.description !== '') {
-        const newIssue = {
-          id: uuid.v4(),
-          done: false,
-          trash: false,
-          description: this.description
-        };
-
-        this.addIssue(newIssue);
+        this.addIssue(this.description);
 
         this.description = '';
       }
-    },
-    addIssue(newIssue) {
-      // Add issue here
-      console.log(newIssue);
     }
+  },
+  created() {
+    this.getIssues();
   }
 };
 </script>

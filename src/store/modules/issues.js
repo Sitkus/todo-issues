@@ -30,18 +30,38 @@ const state = {
 };
 
 const getters = {
-  allIssues: (state) => state.issues,
-  openIssues: (state) => state.issues.filter((issue) => !issue.done && !issue.trash),
-  doneIssues: (state) => state.issues.filter((issue) => issue.done && !issue.trash),
-  trashedIssues: (state) => state.issues.filter((issue) => issue.trash)
+  openIssues: state => state.issues.filter(issue => !issue.done && !issue.trash),
+  doneIssues: state => state.issues.filter(issue => issue.done && !issue.trash),
+  trashedIssues: state => state.issues.filter(issue => issue.trash)
 };
 
 const actions = {
-  // Add
+  getIssues({ commit }) {
+    const localStorageIssues = JSON.parse(localStorage.getItem('issues'));
+
+    if (localStorageIssues) {
+      commit('setIssues', localStorageIssues);
+    }
+  },
+  addIssue({ commit }, description) {
+    const issue = {
+      id: uuid.v4(),
+      done: false,
+      trash: false,
+      description
+    };
+
+    commit('newIssue', issue);
+  }
 };
 
 const mutations = {
-  // Add
+  setIssues: (state, issues) => (state.issues = issues),
+  newIssue: (state, issue) => {
+    state.issues.unshift(issue);
+
+    localStorage.setItem('issues', JSON.stringify(state.issues));
+  }
 };
 
 export default {
