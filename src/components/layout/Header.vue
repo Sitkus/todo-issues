@@ -62,10 +62,13 @@ export default {
 
 .nav__link {
   position: relative;
+  transition: color 100ms ease-in-out;
 }
 
-/* Hover only on desktop devices, so not on mobile */
-/* .nav__link:hover {
-  color: var(--yellow);
-} */
+@media screen and (min-width: 768px) {
+  .nav__link:hover {
+    color: var(--yellow);
+    transition: color 100ms ease-in-out;
+  }
+}
 </style>

@@ -31,9 +31,7 @@ export default {
   components: {
     Modal
   },
-  methods: {
-    ...mapActions(['getIssues', 'doneIssue', 'trashIssue', 'openModal', 'closeModal', 'showError', 'removeError'])
-  },
+  methods: mapActions(['getIssues', 'doneIssue', 'trashIssue', 'openModal', 'closeModal', 'showError', 'removeError']),
   computed: mapGetters(['trashedIssues', 'modal', 'errorMessage']),
   created() {
     this.closeModal();

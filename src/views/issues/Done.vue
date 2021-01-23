@@ -31,36 +31,7 @@ export default {
   components: {
     Modal
   },
-  // data() {
-  //   return {
-  //     errorMessage: '',
-  //     modal: {
-  //       open: false,
-  //       id: '',
-  //       description: ''
-  //     }
-  //   };
-  // },
-  methods: {
-    ...mapActions(['getIssues', 'doneIssue', 'trashIssue', 'openModal', 'closeModal', 'showError', 'removeError'])
-    // openModal(issue) {
-    //   this.removeError();
-
-    //   this.modal = {
-    //     open: !this.open,
-    //     id: issue.id,
-    //     description: issue.description
-    //   };
-    // },
-    // showError() {
-    //   this.removeError();
-
-    //   this.errorMessage = 'Please fill in the message box.';
-    // },
-    // removeError() {
-    //   this.errorMessage = '';
-    // }
-  },
+  methods: mapActions(['getIssues', 'doneIssue', 'trashIssue', 'openModal', 'closeModal', 'showError', 'removeError']),
   computed: mapGetters(['doneIssues', 'modal', 'errorMessage']),
   created() {
     this.closeModal();

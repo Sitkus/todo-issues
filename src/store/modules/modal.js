@@ -19,11 +19,15 @@ const actions = {
 
 const mutations = {
   openModal: (state, issue) => {
+    document.body.classList.add('open-modal');
+
     state.isOpen = true;
     state.issueId = issue.id;
     state.issueDescription = issue.description;
   },
   closeModal: state => {
+    document.body.classList.remove('open-modal');
+
     state.isOpen = false;
     state.issueId = '';
     state.issueDescription = '';

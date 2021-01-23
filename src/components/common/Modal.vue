@@ -49,7 +49,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
@@ -62,6 +62,7 @@ export default {
   padding: 8rem 5rem;
   width: 50rem;
   background-color: var(--light-gray);
+  border-radius: 0.2rem;
 }
 
 .form__exit {
@@ -72,5 +73,12 @@ export default {
   font-size: 1.5rem;
   background: none;
   color: var(--black);
+}
+
+@media screen and (min-width: 768px) {
+  .form__exit:hover {
+    background-color: white;
+    color: var(--yellow);
+  }
 }
 </style>

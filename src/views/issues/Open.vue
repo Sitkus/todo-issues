@@ -34,18 +34,16 @@ export default {
     AddIssue,
     Modal
   },
-  methods: {
-    ...mapActions([
-      'getIssues',
-      'doneIssue',
-      'updateIssue',
-      'trashIssue',
-      'openModal',
-      'closeModal',
-      'showError',
-      'removeError'
-    ])
-  },
+  methods: mapActions([
+    'getIssues',
+    'doneIssue',
+    'updateIssue',
+    'trashIssue',
+    'openModal',
+    'closeModal',
+    'showError',
+    'removeError'
+  ]),
   computed: mapGetters(['openIssues', 'modal', 'errorMessage']),
   created() {
     this.closeModal();

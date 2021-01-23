@@ -72,6 +72,12 @@ a {
   margin: 0 auto;
 }
 
+@media screen and (min-width: 768px) {
+  .main {
+    padding: 8rem 2rem;
+  }
+}
+
 /*------------------------------------*\
   #Buttons
 \*------------------------------------*/
@@ -82,16 +88,23 @@ button {
   color: white;
   padding: 1.5rem 2rem;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
   outline: none;
   cursor: pointer;
   transform: scale(1);
-  transition: transform 250ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 
 button:active {
   transform: scale(0.95);
-  transition: transform 150ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+@media screen and (min-width: 768px) {
+  button:hover {
+    background-color: var(--black);
+    transition: all 200ms ease-in-out;
+  }
 }
 
 /*------------------------------------*\
@@ -124,6 +137,7 @@ button:active {
   background-color: var(--light-white);
   padding: 2rem 3rem;
   margin-bottom: 1rem;
+  border-radius: 0.2rem;
 }
 
 .issue:last-child {
@@ -148,6 +162,17 @@ button:active {
 
 .issue__button:last-child {
   margin-right: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .issue__button {
+    padding: 1rem;
+  }
+
+  .issue__button:hover {
+    background-color: white;
+    color: var(--yellow);
+  }
 }
 
 /*------------------------------------*\
@@ -178,7 +203,7 @@ button:active {
   min-height: 10rem;
   padding: 1.5rem;
   margin: 1rem 0 2rem;
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
 }
 
 .form__input:focus {
@@ -189,5 +214,20 @@ button:active {
 .form__error {
   color: red;
   margin-top: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .issues {
+    max-width: 70rem;
+  }
+}
+
+/*------------------------------------*\
+  #Open modal body class
+\*------------------------------------*/
+
+.open-modal {
+  width: 100%;
+  position: fixed;
 }
 </style>
