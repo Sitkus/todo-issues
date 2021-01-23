@@ -12,7 +12,7 @@
           v-model="modal.issueDescription"
           name="modalDescription"
           class="form__input"
-          placeholder="I had trouble with..."
+          placeholder="I had an issue with..."
         ></textarea>
       </label>
 

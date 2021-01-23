@@ -8,7 +8,7 @@
         v-model="description"
         name="description"
         class="form__input"
-        placeholder="I had trouble with..."
+        placeholder="I had an issue with..."
       ></textarea>
     </label>
 
