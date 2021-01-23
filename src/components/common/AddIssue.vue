@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'AddIssue',
@@ -27,13 +27,8 @@ export default {
       description: ''
     };
   },
-  props: {
-    errorMessage: String,
-    showError: Function,
-    removeError: Function
-  },
   methods: {
-    ...mapActions(['newIssue']),
+    ...mapActions(['newIssue', 'showError', 'removeError']),
     createIssue() {
       if (this.description) {
         this.removeError();
@@ -45,6 +40,7 @@ export default {
         this.showError();
       }
     }
-  }
+  },
+  computed: mapGetters(['errorMessage'])
 };
 </script>

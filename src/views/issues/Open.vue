@@ -1,6 +1,6 @@
 <template>
   <main class="main">
-    <AddIssue v-bind:error-message="errorMessage" v-bind:show-error="showError" v-bind:remove-error="removeError" />
+    <AddIssue />
 
     <ul class="issues">
       <h3 class="issues__title">Existing issues</h3>
@@ -10,7 +10,7 @@
           <button @click="doneIssue(issue.id)" class="issue__button isseu__button--done">
             Mark done
           </button>
-          <button @click="openModal(issue)" class="issue__button issue__button--edit">
+          <button @click="openModal(issue)" v-on:click="removeError" class="issue__button issue__button--edit">
             <font-awesome-icon icon="edit" />
           </button>
           <button @click="trashIssue(issue.id)" class="issue__button issue__button--trash">
@@ -20,12 +20,7 @@
       </li>
     </ul>
 
-    <Modal
-      v-bind:modal="modal"
-      v-bind:error-message="errorMessage"
-      v-bind:show-error="showError"
-      v-bind:remove-error="removeError"
-    />
+    <Modal />
   </main>
 </template>
 
@@ -39,41 +34,21 @@ export default {
     AddIssue,
     Modal
   },
-  data() {
-    return {
-      errorMessage: '',
-      modal: {
-        open: false,
-        id: '',
-        description: ''
-      }
-    };
-  },
   methods: {
-    ...mapActions(['getIssues', 'doneIssue', 'updateIssue', 'trashIssue']),
-    markComplete(id) {
-      this.doneIssue(id);
-    },
-    openModal(issue) {
-      this.removeError();
-
-      this.modal = {
-        open: !this.open,
-        id: issue.id,
-        description: issue.description
-      };
-    },
-    showError() {
-      this.removeError();
-
-      this.errorMessage = 'Please fill in the message box.';
-    },
-    removeError() {
-      this.errorMessage = '';
-    }
+    ...mapActions([
+      'getIssues',
+      'doneIssue',
+      'updateIssue',
+      'trashIssue',
+      'openModal',
+      'closeModal',
+      'showError',
+      'removeError'
+    ])
   },
-  computed: mapGetters(['openIssues']),
+  computed: mapGetters(['openIssues', 'modal', 'errorMessage']),
   created() {
+    this.closeModal();
     this.getIssues();
   }
 };

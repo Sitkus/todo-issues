@@ -57,8 +57,8 @@ const actions = {
   doneIssue({ commit }, id) {
     commit('markComplete', id);
   },
-  updateIssue({ commit }, id) {
-    commit('updateIssue', id);
+  updateIssue({ commit }, modalData) {
+    commit('updateIssue', modalData);
   },
   trashIssue({ commit }, id) {
     commit('trashIssue', id);
@@ -85,8 +85,8 @@ const mutations = {
   },
   updateIssue: (state, modalData) => {
     state.issues = state.issues.map(issue => {
-      if (issue.id === modalData.id) {
-        issue.description = modalData.description;
+      if (issue.id === modalData.issueId) {
+        issue.description = modalData.issueDescription;
       }
 
       return issue;

@@ -142,7 +142,7 @@ button:active {
   background: none;
   color: var(--black);
   padding: 0.6rem;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   margin-right: 0.2rem;
 }
 

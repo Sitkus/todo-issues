@@ -1,7 +1,7 @@
 <template>
-  <section v-if="modal.open" class="modal">
+  <section v-if="modal.isOpen" class="modal">
     <form @submit.prevent="updateIssueData" class="form form--modal">
-      <button type="button" @click="closeModal" class="form__exit">
+      <button type="button" @click="closeModal" v-on:click="removeError" class="form__exit">
         <font-awesome-icon icon="times-circle" />
       </button>
       <h2 class="form__title">Update issue</h2>
@@ -9,7 +9,7 @@
       <label class="form__label">
         Issue description:
         <textarea
-          v-model="modal.description"
+          v-model="modal.issueDescription"
           name="modalDescription"
           class="form__input"
           placeholder="I had trouble with..."
@@ -23,32 +23,24 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'Modal',
-  props: {
-    modal: Object,
-    errorMessage: String,
-    showError: Function,
-    removeError: Function
-  },
   methods: {
-    ...mapActions(['updateIssue']),
-    closeModal() {
-      this.modal.open = !this.modal.open;
-    },
+    ...mapActions(['updateIssue', 'openModal', 'closeModal', 'showError', 'removeError']),
     updateIssueData() {
-      if (this.modal.description) {
+      if (this.modal.issueDescription) {
         this.removeError();
 
         this.updateIssue(this.modal);
-        this.modal.open = !this.modal.open;
+        this.modal.isOpen = false;
       } else {
         this.showError();
       }
     }
-  }
+  },
+  computed: mapGetters(['modal', 'errorMessage'])
 };
 </script>
 
@@ -77,7 +69,7 @@ export default {
   right: 2.5rem;
   top: 2.5rem;
   padding: 1rem;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   background: none;
   color: var(--black);
 }
