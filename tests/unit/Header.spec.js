@@ -1,10 +1,10 @@
-import { mount } from '@vue/test-utils';
-import { Header } from '@/components/layout/';
+import { shallowMount } from '@vue/test-utils';
+import { Header } from '@/components/layout';
 
 let wrapper = null;
 
 beforeEach(() => {
-  wrapper = mount(Header, {
+  wrapper = shallowMount(Header, {
     stubs: ['router-link']
   });
 });
