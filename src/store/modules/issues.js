@@ -55,7 +55,7 @@ const actions = {
     commit('addIssue', issue);
   },
   doneIssue({ commit }, id) {
-    commit('markComplete', id);
+    commit('markIssueDone', id);
   },
   updateIssue({ commit }, modalData) {
     commit('updateIssue', modalData);
@@ -72,7 +72,7 @@ const mutations = {
 
     localStorage.setItem('issues', JSON.stringify(state.issues));
   },
-  markComplete: (state, id) => {
+  markIssueDone: (state, id) => {
     state.issues = state.issues.map(issue => {
       if (issue.id === id) {
         issue.done = !issue.done;

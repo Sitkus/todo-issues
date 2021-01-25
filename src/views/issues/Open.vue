@@ -4,8 +4,10 @@
 
     <ul class="issues">
       <h3 class="issues__title">Existing issues</h3>
+
       <li class="issue" :key="issue.id" v-for="issue in openIssues">
         <p class="issue__description">{{ issue.description }}</p>
+
         <div class="issue__buttons">
           <button @click="doneIssue(issue.id)" class="issue__button isseu__button--done">
             Mark done

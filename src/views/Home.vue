@@ -5,7 +5,7 @@
 
       <p class="hero__description">This is a small application for issues storing, reviewing and solving.</p>
 
-      <button v-on:click="redirectToOpenIssues" class="hero__button">Open issues</button>
+      <button v-on:click="redirectToOpenIssues" class="hero__button">Open your issue</button>
     </article>
   </main>
 </template>

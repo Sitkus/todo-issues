@@ -10,13 +10,14 @@
         Issue description:
         <textarea
           v-model="modal.issueDescription"
-          name="modalDescription"
+          name="modalIssueDescription"
           class="form__input"
           placeholder="I had an issue with..."
         ></textarea>
       </label>
 
       <button class="form__button">Update issue</button>
+
       <p class="form__error" v-if="errorMessage">{{ errorMessage }}</p>
     </form>
   </section>
@@ -34,7 +35,7 @@ export default {
         this.removeError();
 
         this.updateIssue(this.modal);
-        this.modal.isOpen = false;
+        this.closeModal();
       } else {
         this.showError();
       }
