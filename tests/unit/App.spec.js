@@ -1,6 +1,6 @@
-import { mount } from '@vue/test-utils';
 import App from '@/App.vue';
 import { Header, Footer } from '@/components/layout';
+import { mount } from '@vue/test-utils';
 
 let wrapper = null;
 

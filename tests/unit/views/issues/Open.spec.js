@@ -1,6 +1,6 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import Open from '@/views/issues/Open.vue';
+import { mount, createLocalVue } from '@vue/test-utils';
 import { AddIssue, Modal } from '@/components/common';
 
 const localVue = createLocalVue();
@@ -9,10 +9,17 @@ localVue.use(Vuex);
 let wrapper = null;
 
 beforeEach(() => {
-  wrapper = shallowMount(Open, {
+  wrapper = mount(Open, {
     store: new Vuex.Store({
       getters: {
-        openIssues: () => [],
+        openIssues: () => [
+          {
+            id: 1,
+            done: false,
+            trash: false,
+            description: 'Just a test here'
+          }
+        ],
         modal: () => 'modal',
         errorMessage: () => ''
       },
@@ -36,11 +43,13 @@ afterEach(() => {
 });
 
 describe('Open', () => {
-  it('Are components being rendered', () => {
+  it('Add form, modal and issues list components being rendered', () => {
     const addIssueComponent = wrapper.findComponent(AddIssue);
     const modalComponent = wrapper.findComponent(Modal);
+    const issuesList = wrapper.find('.issues');
 
     expect(addIssueComponent.exists()).toBe(true);
     expect(modalComponent.exists()).toBe(true);
+    expect(issuesList.exists()).toBe(true);
   });
 });

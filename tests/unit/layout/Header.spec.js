@@ -1,5 +1,5 @@
-import { shallowMount } from '@vue/test-utils';
 import { Header } from '@/components/layout';
+import { shallowMount } from '@vue/test-utils';
 
 let wrapper = null;
 
@@ -14,7 +14,7 @@ afterEach(() => {
 });
 
 describe('Header', () => {
-  it('Check that logo exists', () => {
+  it('Logo exists', () => {
     const img = wrapper.findAll('.nav__logo');
 
     expect(img.length).toBe(1);

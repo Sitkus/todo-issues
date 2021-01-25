@@ -1,5 +1,7 @@
-import { shallowMount } from '@vue/test-utils';
 import Home from '@/views/Home.vue';
+import { shallowMount, config } from '@vue/test-utils';
+
+config.showDeprecationWarnings = false;
 
 let wrapper = null;
 

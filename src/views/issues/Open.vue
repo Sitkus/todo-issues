@@ -9,7 +9,7 @@
         <p class="issue__description">{{ issue.description }}</p>
 
         <div class="issue__buttons">
-          <button @click="doneIssue(issue.id)" class="issue__button isseu__button--done">
+          <button @click="doneIssue(issue.id)" class="issue__button issue__button--done">
             Mark done
           </button>
           <button @click="openModal(issue)" v-on:click="removeError" class="issue__button issue__button--edit">
