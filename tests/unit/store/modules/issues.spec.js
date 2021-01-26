@@ -87,30 +87,6 @@ describe('Issues module', () => {
           done: false,
           trash: false,
           description: 'Example 1'
-        },
-        {
-          id: 2,
-          done: false,
-          trash: false,
-          description: 'Example 2'
-        },
-        {
-          id: 3,
-          done: true,
-          trash: false,
-          description: 'Example 3'
-        },
-        {
-          id: 4,
-          done: false,
-          trash: true,
-          description: 'Example 4'
-        },
-        {
-          id: 5,
-          done: false,
-          trash: false,
-          description: 'Example 5'
         }
       ]
     };
@@ -128,44 +104,9 @@ describe('Issues module', () => {
       description: 'Example for adding new issue'
     };
 
-    const stateToBecome = {
-      issues: [
-        {
-          id: 0,
-          done: false,
-          trash: false,
-          description: 'Example for adding new issue'
-        },
-        {
-          id: 1,
-          done: false,
-          trash: false,
-          description: 'Example 1'
-        },
-        {
-          id: 2,
-          done: false,
-          trash: false,
-          description: 'Example 2'
-        },
-        {
-          id: 3,
-          done: true,
-          trash: false,
-          description: 'Example 3'
-        },
-        {
-          id: 4,
-          done: false,
-          trash: true,
-          description: 'Example 4'
-        }
-      ]
-    };
-
     issues.mutations.addIssue(state, issueToAdd);
 
-    expect(state).toEqual(stateToBecome);
+    expect(state.issues[0]).toEqual(issueToAdd);
   });
 
   it('"markIssueDone" changes issue done status', () => {
