@@ -1,11 +1,11 @@
 import App from '@/App.vue';
 import { Header, Footer } from '@/components/layout';
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 
 let wrapper = null;
 
 beforeEach(() => {
-  wrapper = mount(App, {
+  wrapper = shallowMount(App, {
     stubs: ['router-link', 'router-view']
   });
 });
