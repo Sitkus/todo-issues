@@ -23,7 +23,7 @@ export default {
   --black: #161616;
   --light-gray: #f1f1f1;
   --light-white: #f9f9f9;
-  --yellow: goldenrod;
+  --yellow: #eda31d;
 }
 
 *,
@@ -183,7 +183,7 @@ button:active {
   display: flex;
   flex-direction: column;
   max-width: 50rem;
-  margin: 0 auto 5rem;
+  margin: 0 auto 10rem;
 }
 
 .form__title {

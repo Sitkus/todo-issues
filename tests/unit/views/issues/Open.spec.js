@@ -1,15 +1,23 @@
 import Vuex from 'vuex';
 import Open from '@/views/issues/Open.vue';
-import { mount, createLocalVue } from '@vue/test-utils';
+import { shallowMount, createLocalVue } from '@vue/test-utils';
 import { AddIssue, Modal } from '@/components/common';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEdit, faTrash, faRecycle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+library.add(faEdit, faTrash, faRecycle, faTimesCircle);
+
 const localVue = createLocalVue();
+
 localVue.use(Vuex);
+localVue.component('font-awesome-icon', FontAwesomeIcon);
 
 let wrapper = null;
 
 beforeEach(() => {
-  wrapper = mount(Open, {
+  wrapper = shallowMount(Open, {
     store: new Vuex.Store({
       getters: {
         openIssues: () => [
@@ -20,7 +28,7 @@ beforeEach(() => {
             description: 'Just a test here'
           }
         ],
-        modal: () => 'modal',
+        modal: () => {},
         errorMessage: () => ''
       },
       actions: {

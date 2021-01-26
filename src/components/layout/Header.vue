@@ -70,5 +70,13 @@ export default {
     color: var(--yellow);
     transition: color 100ms ease-in-out;
   }
+
+  .nav__item {
+    margin-right: 3rem;
+  }
+
+  .nav__item--last {
+    margin-right: 0;
+  }
 }
 </style>

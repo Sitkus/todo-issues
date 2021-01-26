@@ -16,7 +16,7 @@
         ></textarea>
       </label>
 
-      <button class="form__button">Update issue</button>
+      <button class="form__button form__button--update">Update issue</button>
 
       <p class="form__error" v-if="errorMessage">{{ errorMessage }}</p>
     </form>
@@ -60,19 +60,25 @@ export default {
 
 .form--modal {
   position: relative;
-  padding: 8rem 5rem;
+  padding: 5rem;
   width: 50rem;
-  background-color: var(--light-gray);
+  background-color: var(--black);
+  color: white;
   border-radius: 0.2rem;
+  margin: 0;
 }
 
 .form__exit {
   position: absolute;
-  right: 2.5rem;
-  top: 2.5rem;
+  right: 1.2rem;
+  top: 1.2rem;
   padding: 1rem;
   font-size: 1.5rem;
   background: none;
+}
+
+.form__button--update:hover {
+  background-color: white;
   color: var(--black);
 }
 
