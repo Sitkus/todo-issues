@@ -12,7 +12,7 @@
       ></textarea>
     </label>
 
-    <button class="form__button">Create issue</button>
+    <button type="submit" class="form__button">Create issue</button>
 
     <p class="form__error" v-if="errorMessage">{{ errorMessage }}</p>
   </form>

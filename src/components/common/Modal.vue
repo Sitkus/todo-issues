@@ -16,7 +16,7 @@
         ></textarea>
       </label>
 
-      <button class="form__button form__button--update">Update issue</button>
+      <button type="submit" class="form__button form__button--update">Update issue</button>
 
       <p class="form__error" v-if="errorMessage">{{ errorMessage }}</p>
     </form>
