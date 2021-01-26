@@ -32,7 +32,7 @@ describe('Modal module', () => {
     expect(modal.getters.modal(state)).toMatchObject(openModalStateToBecome);
   });
 
-  it('Modal is closing when mutations is called', () => {
+  it('Modal is closing when mutation is called', () => {
     const openModalState = {
       isOpen: true,
       issueId: 1,
