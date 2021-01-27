@@ -1,24 +1,31 @@
-# to-do
+# Simple Issues To-Do SAP
+
+This project was built upon given task from a job interview.
+
+Project goals were to build a simple single page application where users can enter their issues and mark them as complete / incomplete, update them using modal or mark as trashed. Project required to use router, redux (vuex) and if possible JEST or Mocha test units.
+
+For test units I used JEST.
 
 ## Project setup
+
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 npm run serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+### Runs JEST tests
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+npm -s run test
+```
