@@ -24,6 +24,11 @@ const routes = [
     path: '/issues/trashed',
     name: 'Trashed Issues',
     component: () => import('../views/issues/Trashed.vue')
+  },
+  {
+    path: '*',
+    name: 'Page Not Found',
+    component: Home
   }
 ];
 
