@@ -1,6 +1,6 @@
 # Simple To-Do SAP
 
-This project was built upon given task from a job interview.
+This project was built upon given task to build issues to-do app.
 
 ## Project goals
 
