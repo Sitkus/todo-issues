@@ -2,6 +2,8 @@
 
 This project was built upon given task to build issues to-do app.
 
+You can check live project here: [netlify](https://issues-to-do-vue-app.netlify.app)
+
 ## Project goals
 
 Build a simple single page application (SAP) where users can enter their issues and mark them as complete / incomplete, update them using modal or mark as trashed.
