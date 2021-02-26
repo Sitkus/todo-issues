@@ -1,26 +1,31 @@
 <template>
-  <section v-if="modal.isOpen" class="modal">
-    <form @submit.prevent="updateIssueData" class="form form--modal">
-      <button type="button" @click="closeModal" v-on:click="removeError" class="form__exit">
-        <font-awesome-icon icon="times-circle" />
-      </button>
-      <h2 class="form__title">Update issue</h2>
+  <transition
+    enter-active-class="animate__animated animate__fadeIn"
+    leave-active-class="animate__animated animate__fadeOut"
+  >
+    <section v-if="modal.isOpen" class="modal">
+      <form @submit.prevent="updateIssueData" class="form form--modal">
+        <button type="button" @click="closeModal" v-on:click="removeError" class="form__exit">
+          <font-awesome-icon icon="times-circle" />
+        </button>
+        <h2 class="form__title">Update issue</h2>
 
-      <label class="form__label">
-        Issue description:
-        <textarea
-          v-model="modal.issueDescription"
-          name="modalIssueDescription"
-          class="form__input"
-          placeholder="I had an issue with..."
-        ></textarea>
-      </label>
+        <label class="form__label">
+          Issue description:
+          <textarea
+            v-model="modal.issueDescription"
+            name="modalIssueDescription"
+            class="form__input"
+            placeholder="I had an issue with..."
+          ></textarea>
+        </label>
 
-      <button type="submit" class="form__button form__button--update">Update issue</button>
+        <button type="submit" class="form__button form__button--update">Update issue</button>
 
-      <p class="form__error" v-if="errorMessage">{{ errorMessage }}</p>
-    </form>
-  </section>
+        <p class="form__error" v-if="errorMessage">{{ errorMessage }}</p>
+      </form>
+    </section>
+  </transition>
 </template>
 
 <script>
